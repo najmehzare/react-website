@@ -26,7 +26,7 @@ export default function UsersSection() {
                 <div className="mb-4">
 
                     <div className="inset-0 flex items-center justify-center">
-                        <Button className="text-black bg-slate-400" onClick={openModalHandler}>
+                        <Button className="text-black bg-slate-400 text-sm" onClick={openModalHandler}>
                                     اضافه کردن کاربر جدید
                         </Button>
                     </div>

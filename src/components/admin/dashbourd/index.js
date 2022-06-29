@@ -1,7 +1,6 @@
 import Slide from "./slide";
-import UsersSection from '../../../components/users';
 
-export default function Dashboard(){
+export default function Dashboard({children}){
     return(
         <div className="min-h-full">
             <nav className="bg-gray-800">
@@ -28,14 +27,9 @@ export default function Dashboard(){
             <main>
                 <div  className="py-3">
                     <Slide />
-                    <UsersSection />
-                    {/* <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-28">
-                        <div className="px-64 py-6 sm:px-0">
-                            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
-                               
-                            </div>
-                        </div>
-                    </div> */}
+                </div>
+                <div className="relative px-6 mx-60">
+                    {children}
                 </div>
             </main>
         </div>
