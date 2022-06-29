@@ -1,11 +1,21 @@
 import { Fragment } from "react";
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react';
 
-export default function Modal({ showModal , setShowModal  , children}){
+import { useDispatch , useSelector } from "react-redux";
+import { closeModal } from "../../store/slices/modalSlice"
+
+export default function Modal({children}){
+
+    const showModal = useSelector((state) => state.modal.showModal)
+    const dispatch = useDispatch()
+
+    const closeModalHandler = () => {
+        dispatch(closeModal())
+    }    
 
     return(
         <Transition.Root show={showModal} as={Fragment}>
-            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setShowModal}>
+            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={closeModalHandler}>
                 <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <Transition.Child
                         as={Fragment}
@@ -16,7 +26,7 @@ export default function Modal({ showModal , setShowModal  , children}){
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 bg-grey-500 bg-opacity-75 transition-opacity" />
+                        <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                     </Transition.Child>
 
                     {/* This element is to trick the browser into centering the modal contents. */}

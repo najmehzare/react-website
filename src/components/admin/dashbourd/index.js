@@ -1,4 +1,5 @@
 import Slide from "./slide";
+import UsersSection from '../../../components/users';
 
 export default function Dashboard(){
     return(
@@ -27,13 +28,14 @@ export default function Dashboard(){
             <main>
                 <div  className="py-3">
                     <Slide />
-                    <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-28">
+                    <UsersSection />
+                    {/* <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-28">
                         <div className="px-64 py-6 sm:px-0">
                             <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
-                            
+                               
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </main>
         </div>
