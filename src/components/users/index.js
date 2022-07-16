@@ -17,12 +17,12 @@ export default function UsersSection() {
         dispatch(openModal())
         dispatch(setChild('addUser'))
     }    
-
+    const showModal = useSelector((state) => state.modal.showModal)
     const modalChildShow = useSelector(state => state.modal.child);
 
     return (
         <div className="h-100 w-full flex items-center justify-center bg-teal-lightest">
-            <div className="bg-white rounded shadow p-6 m-4 w-full  border">
+            <div className="bg-white rounded shadow p-6 m-4 w-full border">
                 <div className="mb-4">
 
                     <div className="inset-0 flex items-center justify-center">
@@ -36,13 +36,15 @@ export default function UsersSection() {
                     <UsersList />
                 </div>
 
-                <Modal>
+                {
+                    showModal &&  <Modal>
                     {
                         modalChildShow==='addUser' 
                         ? <AddUser />
                         : <EditUser />
                     }
-                </Modal>
+                    </Modal>
+                }
 
             </div>
         </div>
