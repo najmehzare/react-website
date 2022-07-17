@@ -4,13 +4,14 @@ import sweetalert from "sweetalert2";
 
 import { deleteUser , setTargetUser } from "../../store/slices/usersSlice"
 import { openModal , setChild } from "../../store/slices/modalSlice"
+import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
+
 import usersApi from '../../api/usersApi';
 
 export default function UserItem({  user , index }) {
 
     const dispatch = useDispatch();
-    // const [showEditModal, setShowEditModal] = useState(false);
-    // const [targetUser, setTargetUser] = useState({});
+
     const users = useSelector(state => state.users.userslist);
     
     const userDeleteHandler = async () => {
@@ -28,7 +29,11 @@ export default function UserItem({  user , index }) {
                     try {
                         await usersApi.delete(`/${user.id}`)
                         dispatch(deleteUser(user.id))
+                        dispatch(openNotify(true));
+                        dispatch(setNotifyText({type:'error',text:'کاربر حذف شد.'}));
                     } catch (e) {
+                        dispatch(openNotify(true));
+                        dispatch(setNotifyText({type:'error',text:'خطایی رخ داده ...'}));
                         console.log(e)
                     }
                 } catch (err) {
@@ -48,25 +53,7 @@ export default function UserItem({  user , index }) {
         dispatch(setChild('editUser'))
         dispatch(openModal())
         
-    }
-
-    // function saveUser(user) {
-    //     // let userItem = usersList.users;
-    //     let item = user;
-    //     let userId = user.id;
-    //     // let newUsers = userItem.filter(item => item.id !== userId)
-        
-    //     // setShowLoading(true)
-
-    //     usersApi.put(`/${userId}`,item)
-    //     .then(response => {
-    //         // fetchAllUserHandler()
-            
-    //         // setShowLoading(false)
-    //     })
-    //     .catch(err => console.log(err));
-    // }
-    
+    }    
 
     return (
         <>

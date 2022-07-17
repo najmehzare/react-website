@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addUser } from "../../store/slices/usersSlice";
 import { closeModal } from "../../store/slices/modalSlice"
+import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 import { useDispatch } from "react-redux";
 import usersApi from '../../api/usersApi';
 
@@ -20,8 +21,11 @@ export default function AddUser() {
             dispatch(addUser(res.data.data));
             dispatch(closeModal());
             setUser({id : Date.now() , name : '' , family : '' , email : '' , isAdmin: 'کاربر' , membershipDate :''})
-
+            dispatch(openNotify(true));
+            dispatch(setNotifyText({type:'success',text:'کاربر جدید اضافه شد.'}));
         } catch (e) {
+            dispatch(openNotify(true));
+            dispatch(setNotifyText({type:'error',text:'خطایی رخ داده ...'}));
             console.log(e);
         }
     }
@@ -32,7 +36,6 @@ export default function AddUser() {
             [e.target.name] : e.target.value
         })
     }
-
 
     return (
 

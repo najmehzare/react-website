@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { setUsers , editUser } from "../../store/slices/usersSlice"
+import { editUser } from "../../store/slices/usersSlice"
 import { useDispatch , useSelector } from "react-redux";
 import { closeModal } from "../../store/slices/modalSlice"
+import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 import usersApi from '../../api/usersApi';
 
 function EditUser() {
@@ -24,17 +25,14 @@ function EditUser() {
 
             let res = await usersApi.put(`/${ user.id }`,user);
 
-            // try {
-            //     let res = await usersApi.get();
-            //     dispatch(setUsers(res.data.data))
-            // } catch (e) {
-            //     console.log(e);
-            // }
-
             dispatch(editUser(res.data.data));
             dispatch(closeModal());
+            dispatch(openNotify(true));
+            dispatch(setNotifyText({type:'success',text:'اطلاعات کاربر به درستی شد.'}));
 
         } catch (e) {
+            dispatch(openNotify(true));
+            dispatch(setNotifyText({type:'error',text:'خطایی رخ داده ...'}));
             console.log(e);
         }
 

@@ -1,13 +1,15 @@
 import { combineReducers, configureStore ,getDefaultMiddleware } from '@reduxjs/toolkit'
 import usersReducer from './slices/usersSlice';
 import modalReducer from './slices/modalSlice';
+import notifyReducer from './slices/notifySlice';
 
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
  
 const rootReducer = combineReducers({
     users : usersReducer,
-    modal : modalReducer
+    modal : modalReducer,
+    notify : notifyReducer,
 })
  
 const persistConfig = {

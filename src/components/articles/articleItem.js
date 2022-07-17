@@ -1,20 +1,15 @@
-import React , {useContext , useReducer} from 'react';
-import { useDispatch } from "react-redux";
+import React , {useContext} from 'react';
 import sweetalert from "sweetalert2";
 
 import articlesListContext from '../../contexts/articlesListContext';
-
-//import Reducers
-import AppReducer from '../../reducers/appReducer';
 
 export default function ArticleItem({  article , index }) {
 
     const articlesContext = useContext(articlesListContext);
 
-    const editArticle =  (id) => {
+    const editArticle =  (id) => {        
         articlesContext.editArticle(id)
     }
-
     
     let deleteArticle = (id)=>{
         sweetalert.fire({

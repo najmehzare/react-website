@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //import components
 import usersApi from '../../api/usersApi';
 import { setUsers } from '../../store/slices/usersSlice';
+import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 import UserItem from "./userItem";
 
 function UsersList(props) {
@@ -26,6 +27,8 @@ function UsersList(props) {
             let res = await usersApi.get();
             dispatch(setUsers(res.data.data))
         } catch (e) {
+            dispatch(openNotify(true));
+            dispatch(setNotifyText({type:'error',text:'خطا در برقراری ارتباط با سرور'}));
             console.log(e);
         }
     }

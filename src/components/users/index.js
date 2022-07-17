@@ -1,5 +1,6 @@
 
 import { useDispatch , useSelector } from "react-redux";
+import 'react-toastify/dist/ReactToastify.css';
 import { openModal , setChild } from "../../store/slices/modalSlice"
 
 import { Button } from "@material-tailwind/react";
@@ -8,6 +9,7 @@ import UsersList from "./usersList";
 import Modal from "../../components/modal/modal";
 import AddUser from "./addUser"
 import EditUser from "./editUser";
+import Notify from "../global/notify";
 
 
 export default function UsersSection() {
@@ -17,7 +19,7 @@ export default function UsersSection() {
         dispatch(openModal())
         dispatch(setChild('addUser'))
     }    
-    const showModal = useSelector((state) => state.modal.showModal)
+    const showModal = useSelector((state) => state.modal.showModal);
     const modalChildShow = useSelector(state => state.modal.child);
 
     return (
@@ -45,7 +47,9 @@ export default function UsersSection() {
                     }
                     </Modal>
                 }
-
+                {
+                    <Notify />
+                }
             </div>
         </div>
     )
