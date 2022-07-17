@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch , useSelector } from "react-redux";
+import sweetalert from "sweetalert2";
+
 import { deleteUser , setTargetUser } from "../../store/slices/usersSlice"
 import { openModal , setChild } from "../../store/slices/modalSlice"
-import { useDispatch , useSelector } from "react-redux";
 import usersApi from '../../api/usersApi';
 
 export default function UserItem({  user , index }) {
@@ -12,12 +14,32 @@ export default function UserItem({  user , index }) {
     const users = useSelector(state => state.users.userslist);
     
     const userDeleteHandler = async () => {
-        try {
-            await usersApi.delete(`/${user.id}`)
-            dispatch(deleteUser(user.id))
-        } catch (e) {
-            console.log(e)
-        }
+        sweetalert.fire({
+            title: 'آیا از حذف این کاربر اطمینان دارید؟',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله',
+            cancelButtonText: 'خیر'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    try {
+                        await usersApi.delete(`/${user.id}`)
+                        dispatch(deleteUser(user.id))
+                    } catch (e) {
+                        console.log(e)
+                    }
+                } catch (err) {
+                    sweetalert.fire({
+                        icon: 'error',
+                        title: '',
+                        text: err,
+                    })
+                }
+            }
+        })
     }
 
     const editUser =  (id) => {
