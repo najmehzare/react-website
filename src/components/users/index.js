@@ -21,7 +21,7 @@ export default function UsersSection() {
     const modalChildShow = useSelector(state => state.modal.child);
 
     return (
-        <div className="h-100 w-full flex items-center justify-center bg-teal-lightest">
+        <div className="h-100 w-full flex items-center justify-center bg-teal-lightest"> 
             <div className="bg-white rounded shadow p-6 m-4 w-full border">
                 <div className="mb-4">
 

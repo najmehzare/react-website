@@ -2,7 +2,7 @@ import Slide from "./slide";
 
 export default function Dashboard({children}){
     return(
-        <div className="min-h-full">
+        <div className="min-h-full ">
             <nav className="bg-gray-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
@@ -11,9 +11,9 @@ export default function Dashboard({children}){
                         <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
                         </div>
                     </div>
-                        <div className="hidden md:block">
-                            <div className="ml-4 flex items-center md:ml-6 text-white">  خروج </div>
-                        </div>
+                    <div className="">
+                        <div className="ml-4 flex items-center md:ml-6 text-white">  خروج </div>
+                    </div>
                     </div>
                 </div>
             </nav>
@@ -24,13 +24,19 @@ export default function Dashboard({children}){
                 </div>
             </header>
 
-            <main>
-                <div  className="py-3">
-                    <Slide />
+            <main className=" flex sm:flex-col flex-row">
+                <div className="sm:hidden bg-slate-100 w-full items-center justify-center flex">
+                    menu
                 </div>
-                <div className="relative px-6 mx-60">
-                    {children}
+                <div className="py-3 hidden sm:block">
+                    <div >
+                        <Slide />
+                    </div>
+                    <div className="relative px-6 sm:mx-60 sm:w-4/5 ">
+                        {children}
+                    </div>
                 </div>
+                
             </main>
         </div>
     )
