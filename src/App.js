@@ -6,6 +6,7 @@ import SuspenseLoading from './components/modal/suspenseLoading'
 
 const UsersSection = lazy(() => import('./components/users'));
 const ArticlesSection = lazy(() => import('./components/articles'));
+const GallerySection = lazy(() => import('./components/galleries'));
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/admin/dashboard" element={<Dashboard><Suspense fallback={<SuspenseLoading />}></Suspense></Dashboard>} />
       <Route path="/admin/users" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><UsersSection /></Suspense></Dashboard>} />
       <Route path="/admin/articles" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><ArticlesSection /> </Suspense></Dashboard>} />
+      <Route path="/admin/galleries" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><GallerySection /> </Suspense></Dashboard>} />
       <Route path="*" element={<Navigate to="/admin/dashboard" />} />
   </Routes>
     

@@ -1,4 +1,4 @@
-import { HomeIcon ,UsersIcon ,ArchiveIcon ,AdjustmentsIcon } from '@heroicons/react/solid'
+import { HomeIcon ,UsersIcon ,ArchiveIcon ,AdjustmentsIcon , CollectionIcon } from '@heroicons/react/solid'
 import {NavLink} from 'react-router-dom';
 
 export default function Slide(){
@@ -32,7 +32,15 @@ export default function Slide(){
           </li>
          
           <li className="relative">
-            <NavLink to="/admin/articles">
+            <NavLink to="/admin/galleries">
+                <div className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out">
+                  <CollectionIcon className="h-5 w-5 text-blue-500"/><span>گالری</span>
+                </div>
+            </NavLink>
+          </li> 
+
+          <li className="relative">
+            <NavLink to="/admin">
                 <div className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out">
                   <AdjustmentsIcon className="h-5 w-5 text-blue-500"/><span>تنظیمات</span>
                 </div>
