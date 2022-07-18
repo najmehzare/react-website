@@ -5,6 +5,8 @@ import ArticlesListContext from '../../contexts/articlesListContext';
 
 export default function AddArticle() {
 
+    // console.log('add');
+
     const [ article , setArticle ] = useState({
         id :'' , title : '' , body : '' , auter : '' , create_date :''
     });

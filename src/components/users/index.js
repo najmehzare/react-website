@@ -13,8 +13,11 @@ import Notify from "../global/notify";
 
 
 export default function UsersSection() {
+    
+    // console.log('index');
+    
     const dispatch = useDispatch()
-
+    
     const openModalHandler = () => {
         dispatch(openModal())
         dispatch(setChild('addUser'))

@@ -15,8 +15,11 @@ import UserItem from "./userItem";
 
 function UsersList() {
 
-
+    // console.log('userList');
+    
     const dispatch = useDispatch();
+
+    const users = useSelector(state => state.users.userslist);
 
     useEffect(() => {
         getUsers();
@@ -33,7 +36,7 @@ function UsersList() {
         }
     }
 
-    const users = useSelector(state => state.users.userslist);
+    
     
     return (
         <>

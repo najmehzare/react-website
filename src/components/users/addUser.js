@@ -7,6 +7,8 @@ import usersApi from '../../api/usersApi';
 
 
 export default function AddUser() {
+    
+    // console.log('add');
 
     const dispatch = useDispatch();
     const [ user , setUser ] = useState({

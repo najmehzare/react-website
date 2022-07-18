@@ -3,6 +3,8 @@ import articlesListContext from '../../contexts/articlesListContext';
 
 function EditArticle() {
 
+    // console.log('edit');
+
     const ArticlesContext = useContext(articlesListContext);
     const  targetArticle = ArticlesContext.targetArticle;
       const [ article , setUser ] = useState({

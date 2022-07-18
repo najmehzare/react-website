@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { memo } from 'react';
 import { useDispatch , useSelector } from "react-redux";
 import sweetalert from "sweetalert2";
 import PropTypes from 'prop-types';
@@ -10,6 +10,8 @@ import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 import usersApi from '../../api/usersApi';
 
 function UserItem({ user , index }) {
+
+    // console.log('userItem');
 
     const dispatch = useDispatch();
 
@@ -100,4 +102,6 @@ UserItem.propTypes = {
     user: PropTypes.object.isRequired,
 }
 
-export default UserItem;
+export default memo (UserItem , (prevProp , nextProp)=>{
+    return prevProp.user === nextProp.user;
+});

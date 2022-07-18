@@ -1,10 +1,12 @@
-import React , {useContext} from 'react';
+import React , {useContext , memo } from 'react';
 import PropTypes from 'prop-types';
 import sweetalert from "sweetalert2";
 
 import articlesListContext from '../../contexts/articlesListContext';
 
 function ArticleItem({ article , index }) {
+
+    // console.log('item');
 
     const articlesContext = useContext(articlesListContext);
 
@@ -76,4 +78,6 @@ ArticleItem.propTypes = {
     article: PropTypes.object.isRequired,
 }
 
-export default ArticleItem;
+export default memo (ArticleItem, (prevProp , nextProp)=>{
+    return prevProp.article === nextProp.article;
+});

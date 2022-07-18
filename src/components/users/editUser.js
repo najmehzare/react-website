@@ -7,6 +7,8 @@ import usersApi from '../../api/usersApi';
 
 function EditUser() {
 
+    // console.log('edit');
+    
     const targetUser = useSelector(state => state.users.targetUser);
       const [ user , setUser ] = useState({
             id : targetUser.id ,

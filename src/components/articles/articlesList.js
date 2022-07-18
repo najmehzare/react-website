@@ -12,6 +12,8 @@ import ArticleItem from "./articleItem";
 import ArticlesListContext from '../../contexts/articlesListContext';
 
 function ArticlesList() {
+    
+    // console.log('list');
 
     const ArticlesContext = useContext(ArticlesListContext);
     const articlesList = ArticlesContext;
