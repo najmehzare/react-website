@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from '@headlessui/react'
+import PropTypes from 'prop-types';
 
-export default function Modal({ showLoading , setShowLoading}){
+function Modal({ showLoading , setShowLoading}){
     return(
         <Transition.Root show={showLoading} as={Fragment}>
             <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setShowLoading}>
@@ -53,3 +54,11 @@ export default function Modal({ showLoading , setShowLoading}){
         </Transition.Root>
     )
 }
+
+Modal.propTypes = {
+    showLoading: PropTypes.bool.isRequired,
+    setShowLoading: PropTypes.func,
+}
+
+
+export default Modal;

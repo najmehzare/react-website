@@ -13,7 +13,7 @@ import { setUsers } from '../../store/slices/usersSlice';
 import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 import UserItem from "./userItem";
 
-function UsersList(props) {
+function UsersList() {
 
 
     const dispatch = useDispatch();

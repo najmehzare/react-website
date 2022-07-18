@@ -1,9 +1,10 @@
 import React , {useContext} from 'react';
+import PropTypes from 'prop-types';
 import sweetalert from "sweetalert2";
 
 import articlesListContext from '../../contexts/articlesListContext';
 
-export default function ArticleItem({  article , index }) {
+function ArticleItem({ article , index }) {
 
     const articlesContext = useContext(articlesListContext);
 
@@ -69,3 +70,10 @@ export default function ArticleItem({  article , index }) {
         
     )
 }
+
+ArticleItem.propTypes = {
+    index: PropTypes.number.isRequired,
+    article: PropTypes.object.isRequired,
+}
+
+export default ArticleItem;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch , useSelector } from "react-redux";
 import sweetalert from "sweetalert2";
+import PropTypes from 'prop-types';
 
 import { deleteUser , setTargetUser } from "../../store/slices/usersSlice"
 import { openModal , setChild } from "../../store/slices/modalSlice"
@@ -8,7 +9,7 @@ import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 
 import usersApi from '../../api/usersApi';
 
-export default function UserItem({  user , index }) {
+function UserItem({ user , index }) {
 
     const dispatch = useDispatch();
 
@@ -93,3 +94,10 @@ export default function UserItem({  user , index }) {
         
     )
 }
+
+UserItem.propTypes = {
+    index: PropTypes.number.isRequired,
+    user: PropTypes.object.isRequired,
+}
+
+export default UserItem;
