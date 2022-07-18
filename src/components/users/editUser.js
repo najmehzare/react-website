@@ -51,7 +51,7 @@ function EditUser() {
             <form className="form-inline" onSubmit={formHandler}>
                 <label className="block text-right">
                     <span className="block text-sm font-medium text-slate-700">نام</span>
-                    <input type="text" name='name' value={user.name} onChange={inputHandler} className="text-right 
+                    <input type="text" name='name' value={user?.name} onChange={inputHandler} className="text-right 
                     mt-1 block w-full px-3 py-2 bg-white border 
                     border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
@@ -59,7 +59,7 @@ function EditUser() {
                 </label>
                 <label className="block text-right">
                     <span className="block text-sm font-medium text-slate-700"> نام خانوادگی</span>
-                    <input type="text"  name='family' value={user.family} onChange={inputHandler} className="text-right 
+                    <input type="text"  name='family' value={user?.family} onChange={inputHandler} className="text-right 
                     mt-1 block w-full px-3 py-2 bg-white border 
                     border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
@@ -67,7 +67,7 @@ function EditUser() {
                 </label>
                 <label className="block text-right">
                     <span className="block text-sm font-medium text-slate-700">ایمیل</span>
-                    <input type="email"  name='email' value={user.email} onChange={inputHandler} className="text-right 
+                    <input type="email"  name='email' value={user?.email} onChange={inputHandler} className="text-right 
                     mt-1 block w-full px-3 py-2 bg-white border 
                     border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
@@ -78,7 +78,7 @@ function EditUser() {
                     <select
                         name="isAdmin"
                         onChange={inputHandler}
-                        value={user.isAdmin}
+                        value={user?.isAdmin}
                         className="text-right mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                         <option>کاربر</option>
@@ -88,7 +88,7 @@ function EditUser() {
                 </label>
                 <label className="block text-right">
                     <span className="block text-sm font-medium text-slate-700">تاریخ عضویت</span>
-                    <input type="date"  name='membershipDate' value={user.membershipDate} onChange={inputHandler} className="text-right 
+                    <input type="date"  name='membershipDate' value={user?.membershipDate} onChange={inputHandler} className="text-right 
                     mt-1 block w-full px-3 py-2 bg-white border 
                     border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500

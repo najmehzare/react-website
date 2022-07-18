@@ -64,15 +64,15 @@ function UserItem({ user , index }) {
             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                 {index + 1}
             </td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.name}</td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.family}</td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.email}</td>
-            <td className=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.isAdmin}</td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.membershipDate}</td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user?.name}</td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user?.family}</td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user?.email}</td>
+            <td className=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user?.isAdmin}</td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user?.membershipDate}</td>
             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                 <button
                     type="button"
-                    onClick={()=>editUser(user.id)}
+                    onClick={()=>editUser(user?.id)}
                     className="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 ml-2"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
