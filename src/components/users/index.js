@@ -1,16 +1,18 @@
 
+import { lazy , Suspense } from "react";
 import { useDispatch , useSelector } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
-import { openModal , setChild } from "../../store/slices/modalSlice"
-
 import { Button } from "@material-tailwind/react";
 
-import UsersList from "./usersList";
-import Modal from "../../components/modal/modal";
-import AddUser from "./addUser"
-import EditUser from "./editUser";
 import Notify from "../global/notify";
 
+import UsersList from "./usersList";
+import AddUser from "./addUser"
+import EditUser from "./editUser";
+
+import { openModal , setChild } from "../../store/slices/modalSlice";
+
+const Modal = lazy(()=>import(/* webpackChunkName: 'modal' */ "../../components/modal/modal"));
 
 export default function UsersSection() {
     
@@ -42,13 +44,17 @@ export default function UsersSection() {
                 </div>
 
                 {
-                    showModal &&  <Modal>
-                    {
-                        modalChildShow==='addUser' 
-                        ? <AddUser />
-                        : <EditUser />
-                    }
-                    </Modal>
+                     <Suspense fallback={<p>Loading ...</p>} >
+                     {
+                        showModal &&  <Modal>
+                        {
+                            modalChildShow==='addUser' 
+                            ? <AddUser />
+                            : <EditUser />
+                        }
+                        </Modal>
+                     }
+                     </Suspense>
                 }
                 {
                     <Notify />

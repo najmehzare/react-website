@@ -1,7 +1,8 @@
-import { useContext , useEffect ,useReducer } from "react";
+import { useContext , useEffect ,useReducer, lazy , Suspense } from "react";
 
 import { Button } from "@material-tailwind/react";
 import { useDispatch , useSelector } from "react-redux";
+
 import { openModal , closeModal , setChild } from "../../store/slices/modalSlice"
 import { openNotify , setNotifyText } from "../../store/slices/notifySlice"
 
@@ -11,13 +12,15 @@ import ArticlesListContext from '../../contexts/articlesListContext';
 //import Reducers
 import AppReducer from '../../reducers/appReducer';
 
-import ArticlesList from "./articlesList";
-import AddArticle from "./addArticle"
-import EditArticle from "./editArticle";
-import Modal from "../../components/modal/modal";
-
 import articleApi from '../../api/articlesApi';
+
 import Notify from "../global/notify";
+
+import ArticlesList from "./articlesList";
+import AddArticle from "./addArticle";
+import EditArticle from "./editArticle";
+
+const Modal = lazy(()=>import(/* webpackChunkName: 'modal' */ "../../components/modal/modal"));
 
 export default function ArticlesSection() {
     
@@ -125,13 +128,17 @@ export default function ArticlesSection() {
                         <ArticlesList />
                     </div>
                     {
-                         showModal && <Modal>
+                        <Suspense fallback={<p>Loading ...</p>} >
                             {
-                                modalChildShow === 'addarticle' 
-                                ? <AddArticle />
-                                : <EditArticle />
+                               showModal && <Modal>
+                                    {
+                                        modalChildShow === 'addarticle' 
+                                        ? <AddArticle />
+                                        : <EditArticle />
+                                    }
+                                </Modal>  
                             }
-                        </Modal>
+                        </Suspense>
                     }
                     {
                         <Notify />

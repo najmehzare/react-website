@@ -2,6 +2,7 @@ import React , {useContext , memo } from 'react';
 import PropTypes from 'prop-types';
 import sweetalert from "sweetalert2";
 
+//import context
 import articlesListContext from '../../contexts/articlesListContext';
 
 function ArticleItem({ article , index }) {
