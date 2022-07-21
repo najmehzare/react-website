@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../components/global/form/input';
 
 export default function Register() {
     return (
@@ -19,25 +20,18 @@ export default function Register() {
                     <form action="">
                         <div class="mt-4">
                             <div>
-                                <label class="block" for="Name">نام</label>
-                                        <input type="text" 
-                                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <Input name="Name" label='نام' />
                             </div>
-                            <div class="mt-4">
-                                <label class="block" for="email">ایمیل</label>
-                                        <input type="text" 
-                                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                            <div>
+                                <Input name="email" label='ایمیل'  type='email'/>
                             </div>
-                            <div class="mt-4">
-                                <label class="block">کلمه عبور</label>
-                                        <input type="password" 
-                                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                            <div>
+                                <Input name="password" label='کلمه عبور' type='password'/>
                             </div>
-                            <div class="mt-4">
-                                <label class="block">تکرار کلمه عبور</label>
-                                        <input type="password" 
-                                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                            <div>
+                                <Input name="password" label='تکرار کلمه عبور ' type='password'/>
                             </div>
+
                             {/* <span class="text-xs text-red-400">Password must be same!</span> */}
                             <div class="flex">
                                 <button class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">ثبت نام</button>
