@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import LazyLoad from 'react-lazyload';
-import {FixedSizeList as List} from 'react-window'
+import {FixedSizeList as List} from 'react-window';
+import Notify from "../global/notify";
+import observable from "../patterns/observable";
 
 const GalleryList = ({data , index , style })=>{
     return (
@@ -33,6 +35,11 @@ export default function GallerySection() {
         {id :'5' , title : '5' , src : 'https://pardazeshha.com/wp-content/uploads/2020/08/z5.png'},
     ]);
 
+    useEffect(() => {
+        observable.notify('این صفحه جهت تست ایجاد شده است.!!!');
+    } , [])
+    
+
     return (
         <div className="flex items-center justify-center bg-teal-lightest">
              <ul>
@@ -58,6 +65,9 @@ export default function GallerySection() {
                     </LazyLoad>
                 </li>
                 )
+            }
+            {
+                <Notify />
             }
             </ul>           
         </div>
