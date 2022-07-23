@@ -2,7 +2,7 @@ import {lazy, Suspense} from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom';
 import Dashboard from "./components/admin/dashbourd";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import observable from "./components/patterns/observable";
 
