@@ -5,12 +5,10 @@ import {
     Typography,
   } from "@material-tailwind/react";
 
-//import components
-import ArticleItem from "./articleItem";
-
 //import context
 import ArticlesListContext from '../../contexts/articlesListContext';
 import SearchInput from '../global/elements/SearchInput';
+import ArticlesTable from './articlesTable';
 
 function ArticlesList() {
     
@@ -39,6 +37,7 @@ function ArticlesList() {
             <div className='grid justify-items-center '>
             <Card className="">
                 <CardBody className="text-center">
+
                     <Typography variant="h5" className="mb-2 flex flex-row justify-between ">
                    
                     <div className="flex justify-start"> لیست مقالات</div>
@@ -46,56 +45,16 @@ function ArticlesList() {
                     </Typography>
                     
                     <Typography className="mb-2">
-                       
                         <div className="">
                             <SearchInput
                                 placeholder="جستجو مقاله"
                                 onChange={onInputChange}
                             />
-                        </div>
-                           
-                      
+                        </div>      
                     </Typography>
-                    
 
+                    <ArticlesTable articles={filteredArticles}/> 
 
-                        <table className="text-right min-w-full divide-y divide-gray-300">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
-                                        ردیف
-                                    </th>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
-                                        عنوان
-                                    </th>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
-                                        نویسنده
-                                    </th>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
-                                        تاریخ ایجاد
-                                    </th>
-                                    <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                        <span className="sr-only">ویرایش</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200 bg-white">
-                               
-                                     {
-                                    ! articlesList
-                                            ? <tr><td>
-                                                    <p>there isn`t any article</p>
-                                            </td></tr>
-                                            : 
-                                            filteredArticles.map((item,index) => <ArticleItem 
-                                                key = {item.id}
-                                                article={item} 
-                                                index={index}
-                                            />)
-                                    }
-
-                            </tbody>
-                        </table>                   
                 </CardBody>
             </Card>
             </div>
