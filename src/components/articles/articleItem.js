@@ -41,7 +41,7 @@ function ArticleItem({ article , index }) {
 
     return (
         <>
-            <tr key={article.id}>
+            <tr key={article.id} className=" hover:bg-slate-100 hover:font-medium">
                 <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                     {index + 1}
                 </td>
