@@ -1,3 +1,4 @@
+import {NavLink} from 'react-router-dom';
 import Slide from "./slide";
 
 export default function Dashboard({children}){
@@ -12,7 +13,9 @@ export default function Dashboard({children}){
                         </div>
                     </div>
                     <div className="">
-                        <div className="ml-4 flex items-center md:ml-6 text-white">  خروج </div>
+                        <div className="ml-4 flex items-center md:ml-6 text-white">
+                            <NavLink to="/admin/login">خروج</NavLink>
+                        </div>
                     </div>
                     </div>
                 </div>

@@ -9,14 +9,14 @@ function Input({ name , type ='text' , label , placeholder  , children }) {
 
     return (
         <>
-        <label class="block">{label}</label>
+        <label className="block">{label}</label>
             <input 
                 type={type}  
                 name={name}
                 placeholder={placeholder}
                 value={value}
                 onChange={changeHandler}
-                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
             {children && children({ value })}
         </>
     )
