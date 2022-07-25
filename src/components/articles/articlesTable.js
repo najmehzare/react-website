@@ -1,9 +1,12 @@
-import React , { useState } from 'react';
+import React , { useState , useMemo } from 'react';
 import { ChevronDownIcon ,ChevronUpIcon } from '@heroicons/react/solid'
 
+import Pagination from '../global/pagination';
 
 //import components
 import ArticleItem from "./articleItem";
+
+let PageSize = 2;
 
 const orderBy = (articles, value, direction) => {
     if (direction === "asc") {
@@ -59,6 +62,17 @@ function ArticlesTable({articles}) {
       setValue(value);
     };
     
+    const [currentPage, setCurrentPage] = useState(1);
+
+    let currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return orderedArticles.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage , articles]);
+    
+    if(orderedArticles.length != 0 && currentTableData.length == 0 )
+      currentTableData=orderedArticles.slice(0, PageSize);
+
     return (
         <>
         <table className="text-right min-w-full divide-y divide-gray-300">
@@ -103,13 +117,13 @@ function ArticlesTable({articles}) {
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
                 
-                        {
+                    {
                     ! orderedArticles
                             ? <tr><td>
                                     <p>there isn`t any article</p>
                             </td></tr>
                             : 
-                            orderedArticles.map((item,index) => <ArticleItem 
+                            currentTableData.map((item,index) => <ArticleItem 
                                 key = {item.id}
                                 article={item} 
                                 index={index}
@@ -117,7 +131,17 @@ function ArticlesTable({articles}) {
                     }
 
             </tbody>
-        </table>  
+        </table> 
+        <div className='flex justify-center'>
+            <Pagination
+                key={currentPage}
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={orderedArticles.length}
+                pageSize={PageSize}
+                onPageChange={page => setCurrentPage(page)}
+            />
+        </div> 
         </>
     )
 }

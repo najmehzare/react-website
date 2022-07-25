@@ -22,7 +22,7 @@ function ArticlesList() {
     const filteredArticles = articlesList.filter(
       (article) =>
         article.title.toLowerCase().includes(keyword) ||
-        article.body.toLowerCase().includes(keyword) ||
+        // article.body.toLowerCase().includes(keyword) ||
         article.auter.toLowerCase().includes(keyword)
     );
   
@@ -43,16 +43,12 @@ function ArticlesList() {
                     <div className="flex justify-start"> لیست مقالات</div>
                     <div className="flex justify-end text-sm font-light"> کل مقالات: {articlesList.length} </div>
                     </Typography>
-                    
-                    <Typography className="mb-2">
-                        <div className="">
+                        <div className="mb-2">
                             <SearchInput
                                 placeholder="جستجو مقاله"
                                 onChange={onInputChange}
                             />
-                        </div>      
-                    </Typography>
-
+                        </div>   
                     <ArticlesTable articles={filteredArticles}/> 
 
                 </CardBody>
