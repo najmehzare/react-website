@@ -1,4 +1,5 @@
 import { useState , useContext } from "react";
+import { Alert } from "@material-tailwind/react";
 
 //import context
 import ArticlesListContext from '../../contexts/articlesListContext';
@@ -6,6 +7,8 @@ import ArticlesListContext from '../../contexts/articlesListContext';
 export default function AddArticle() {
 
     // console.log('add');
+
+    const [error, setError] = useState("");
 
     const [ article , setArticle ] = useState({
         id :'' , title : '' , body : '' , auter : '' , create_date :''
@@ -15,6 +18,12 @@ export default function AddArticle() {
 
     let formHandler = (e) => {
         e.preventDefault();
+        
+        if (article.title === "") {
+            setError("عنوان مقاله باید وارد شود.!");
+            return;
+        }
+
         ArticlesContext.addArticle(article)
     }
 
@@ -28,6 +37,8 @@ export default function AddArticle() {
     return (
     <>
         <div className="m-4">
+        { error && (<Alert color="red" className="bg-red-400 text-right" onClick={() => setError(null)}> {error} </Alert>)
+        }
         <form className="form-inline" onSubmit={formHandler}>
             <label className="block text-right">
                 <span className="block text-sm font-medium text-slate-700"> عنوان مقاله</span>

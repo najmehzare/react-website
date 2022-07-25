@@ -6,7 +6,7 @@ import Pagination from '../global/pagination';
 //import components
 import ArticleItem from "./articleItem";
 
-let PageSize = 2;
+let PageSize = 10;
 
 const orderBy = (articles, value, direction) => {
     if (direction === "asc") {
