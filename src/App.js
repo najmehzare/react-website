@@ -11,6 +11,7 @@ import withAuth from "./components/patterns/withAuth";
 import Login from './components/auth/login';
 import Register from './pages/register';
 
+const HomeDashboard = lazy(() => import('./components/admin/dashbourd/home'));
 const UsersSection = lazy(() => import('./components/users'));
 const ArticlesSection = lazy(() => import('./components/articles'));
 const GallerySection = lazy(() => import('./components/galleries'));
@@ -31,7 +32,7 @@ function App({ auth }) {
     <Routes>
       <Route path="/admin/login" element={<Suspense fallback={<SuspenseLoading />}><Login /></Suspense>} />
       <Route path="/admin/register" element={<Suspense fallback={<SuspenseLoading />}><Register /></Suspense>} />
-      <Route path="/admin/dashboard" element={<Dashboard><Suspense fallback={<SuspenseLoading />}></Suspense></Dashboard>} />
+      <Route path="/admin/dashboard" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><HomeDashboard /></Suspense></Dashboard>} />
       <Route path="/admin/users" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><UsersSection /></Suspense></Dashboard>} />
       <Route path="/admin/articles" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><ArticlesSection /> </Suspense></Dashboard>} />
       <Route path="/admin/galleries" element={<Dashboard><Suspense fallback={<SuspenseLoading />}><GallerySection /> </Suspense></Dashboard>} />

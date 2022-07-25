@@ -70,7 +70,7 @@ function ArticlesTable({articles}) {
         return orderedArticles.slice(firstPageIndex, lastPageIndex);
     }, [currentPage , articles]);
     
-    if(orderedArticles.length != 0 && currentTableData.length == 0 )
+    if(orderedArticles.length !== 0 && currentTableData.length === 0 )
       currentTableData=orderedArticles.slice(0, PageSize);
 
     return (
